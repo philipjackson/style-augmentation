@@ -1,1 +1,3 @@
-include styleaug/checkpoint.pth
+include styleaug/checkpoint_transformer.pth
+include styleaug/checkpoint_stylepredictor.pth
+include styleaug/checkpoint_embeddings.pth
