@@ -37,7 +37,7 @@ augmentor = StyleAugmentor()
 im_restyled = augmentor(im_torch)
 
 # display:
-plt.imshow(toPIL(im_restyled.squeeze()).cpu())
+plt.imshow(toPIL(im_restyled.squeeze().cpu()))
 plt.show()
 
 ```
