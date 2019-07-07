@@ -46,14 +46,12 @@ plt.show()
 
 Please cite our paper if you use this code in your own work:
 ```
-@article{jackson2018style,
-  author    = {Philip T. Jackson and
-               Amir Atapour Abarghouei and
-               Stephen Bonner and
-               Toby P. Breckon and
-               Boguslaw Obara},
-  title     = {Style Augmentation: Data Augmentation via Style Randomization},
-  year      = {2018},
-  url       = {http://arxiv.org/abs/1809.05375}
+@inproceedings{jackson2019style,
+  title={Style Augmentation: Data Augmentation via Style Randomization},
+  author={Jackson, Philip T and Atapour-Abarghouei, Amir and Bonner, Stephen and Breckon, Toby P and Obara, Boguslaw},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops},
+  pages={83--92},
+  year={2019}
 }
+
 ```
