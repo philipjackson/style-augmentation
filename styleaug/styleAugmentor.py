@@ -51,14 +51,13 @@ class StyleAugmentor(nn.Module):
         embedding = torch.mm(embedding,self.A.transpose(1,0)) + self.mean # n x 100
         return embedding
 
-    def forward(self,x,alpha=0.5,downsamples=0,embedding=None,useStylePredictor=True,detach=True):
+    def forward(self,x,alpha=0.5,downsamples=0,embedding=None,useStylePredictor=True):
         # augments a batch of images with style randomization
         # x: B x C x H x W image tensor
         # alpha: float in [0,1], controls interpolation between random style and original style
         # downsamples: int, number of times to downsample by factor of 2 before applying style transfer
         # embedding: B x 100 tensor, or None. Use this embedding if provided.
         # useStylePredictor: bool. If True, we use the inception based style predictor to compute the original style embedding for the input image, and use that for interpolation. If False, we use the mean ImageNet embedding instead, which is slightly faster.
-        # detach: bool. If true, detach the augmented image tensor to prevent backpropagation into self.ghiasi and self.stylePredictor
 
         # style embedding for when alpha=0:
         base = self.stylePredictor(x) if useStylePredictor else self.imagenet_embedding
@@ -80,7 +79,4 @@ class StyleAugmentor(nn.Module):
         if downsamples:
             restyled = nn.functional.upsample(restyled,scale_factor=2**downsamples,mode='bilinear')
         
-        if detach:
-            return restyled.detach()
-        else:
-            return restyled
+        return restyled.detach() # detach prevents the user from accidentally backpropagating errors into stylePredictor or ghiasi while training a downstream model

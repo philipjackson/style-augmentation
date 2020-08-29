@@ -63,7 +63,7 @@ class StylePredictor(nn.Module):
         # predict style embedding:
         x = self.fc(x)
 
-        return x.detach() # detaching the style embedding because we don't want to train the style predictor end-to-end along with the user's downstream network
+        return x
 
 
 
